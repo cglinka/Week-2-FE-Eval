@@ -77,13 +77,13 @@
         }
     ];
 
-    var renderLibrary = function() {
+    var renderLibrary = function () {
         // HTML Template
         var bookTemplateHtml = $('#templates .book').html();
         var bookTemplate = _.template(bookTemplateHtml);
 
         // Loop over the array of book objects.
-        for(var i=0; i<books.length; i+=1) {
+        for(var i = 0; i < books.length; i += 1) {
             var newBookHtml = bookTemplate(books[i]);
             $('#library').append(newBookHtml);
         }
@@ -92,16 +92,16 @@
     renderLibrary();
 
     // 5. Add New Books to the page via input
-    $('#submit-button').on('click', function(e){
+    $('#submit-button').on('click', function (e) {
         // Create new book object
         var titleInput = $('#titleInput').val();
         var authorInput = $('#authorInput').val();
-        var newBook = { title: titleInput, author: authorInput, status: 'available'};
+        var newBook = { title: titleInput, author: authorInput, status: 'available' };
 
         // HTML Template
         var bookTemplateHtml = $('#templates .book').html();
         var bookTemplate = _.template(bookTemplateHtml);
-        var newBookHtml = bookTemplate(newBook)
+        var newBookHtml = bookTemplate(newBook);
 
         // Append HTML to document
         $('#library').append(newBookHtml);
@@ -111,9 +111,9 @@
 
     var titleInput = $('#titleInput').val();
     var authorInput = $('#authorInput').val();
-    var newBook = { title: titleInput, author: authorInput, status: 'available'};
-    // var Library = []
-    // Library.push(newBook)
+    var newBook = { title: titleInput, author: authorInput, status: 'available' };
+    var Library = [];
+    Library.push(newBook)
 
 
 
