@@ -23,6 +23,14 @@
 <body>
 
 <h1>THE LIBRARY</h1>
+
+<!-- INPUTS -->
+<label>TITLE: </label><input type="text" id="titleInput"></input>
+<label>AUTHOR: </label><input type="text" id="authorInput"></input>
+<input id="submit-button" type="button" value="Add new book">
+
+
+
 <!-- LIBRARY -->
 <div id="library">
     <div class = "book">
@@ -98,6 +106,14 @@
         // Append HTML to document
         $('#library').append(newBookHtml);
     });
+
+    // 7. Append new book to Library Array.
+
+    var titleInput = $('#titleInput').val();
+    var authorInput = $('#authorInput').val();
+    var newBook = { title: titleInput, author: authorInput, status: 'available'};
+    // var Library = []
+    // Library.push(newBook)
 
 
 
