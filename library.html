@@ -56,14 +56,21 @@
     var bookTemplate = _.template(bookTemplateHtml);
 
     // Event listener
-    $(document).on('click', function(e) {
+    // $(document).on('click', function(e) {
         // Push data object into the template.
-        var newBookHtml = bookTemplate(book);
+        // var newBookHtml = bookTemplate(book);
     
         // Append new book to page HTML.
-        $('#library').append(newBookHtml);
-    });
+        // $('#library').append(newBookHtml);
+    // });
 
+    var book = {
+        title: 'Sabriel',
+        author: 'Garth Nix',
+        status: 'available'
+    };
+
+    // 4. Multiple books
     // Array of book objects
     var books = [
         {
@@ -82,6 +89,12 @@
             status: 'available'
         }
     ];
+
+    // Loop over the array of book objects.
+    for(var i=0; i<books.length; i+=1) {
+        var newBookHtml = bookTemplate(books[i]);
+        $('#library').append(newBookHtml);
+    };
 
 
 </script>
