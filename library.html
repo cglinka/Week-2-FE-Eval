@@ -3,7 +3,9 @@
   <title>Week 2 Frontend Project</title>
   <style type="text/css">
     #templates { display: none; }
+
     small { position: fixed; bottom: 4px; right: 4px; }
+    
     #library .book {
       background: #ccc;
       width: 200px;
@@ -21,18 +23,67 @@
 <body>
 
 <h1>THE LIBRARY</h1>
-
-
-<div id="library"></div>
-
-<div id="templates">
-
+<!-- LIBRARY -->
+<div id="library">
+    <div class = "book">
+        <h3>BOOK TITLE</h3>
+        <h5>BOOK AUTHOR</h5>
+        <p>Status: available</p>
+    </div>
 </div>
 
+<!-- TEMPLATE -->
+<div id="templates">
+    <script class="book" type="text/template">
+        <div class = "book">
+            <h3><%= title %></h3>
+            <h5><%= author %></h5>
+            <p>Status: <%= status %></p>
+        </div>
+    </script>
+</div>
+
+<!-- SCRIPTS IMPORT -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+
+<!-- SCRIPT MINE -->
 <script type="text/javascript">
-  // TODO
+    // 3. A Single Template
+
+    // Create the HTML TEMPLATE
+    var bookTemplateHtml = $('#templates .book').html();
+    var bookTemplate = _.template(bookTemplateHtml);
+
+    // Event listener
+    $(document).on('click', function(e) {
+        // Push data object into the template.
+        var newBookHtml = bookTemplate(book);
+    
+        // Append new book to page HTML.
+        $('#library').append(newBookHtml);
+    });
+
+    // Array of book objects
+    var books = [
+        {
+            title: 'Sabriel',
+            author: 'Garth Nix',
+            status: 'available'
+        },
+        {
+            title: 'A Second Book',
+            author: 'Some Guy',
+            status: 'available'
+        },
+        {
+            title: 'Anne of Green Gables',
+            author: 'L M Montgomery',
+            status: 'available'
+        }
+    ];
+
+
 </script>
 
 <small>It's back.</small>
