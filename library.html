@@ -59,7 +59,25 @@
 <script type="text/javascript">
     // 4. Multiple books
     // Array of book objects
-    var books = [
+    // var books = [
+        
+    // ];
+
+    var renderLibrary = function (newLibrary) {
+        // HTML Template
+        var bookTemplateHtml = $('#templates .book').html();
+        var bookTemplate = _.template(bookTemplateHtml);
+
+        // Loop over the array of book objects.
+        for(var i = 0; i < newLibrary.length; i += 1) {
+            var newBookHtml = bookTemplate(newLibrary[i]);
+            $('#library').append(newBookHtml);
+        }
+    };
+
+    // renderLibrary();
+
+    var testLibrary = [
         {
             title: 'Sabriel',
             author: 'Garth Nix',
@@ -77,43 +95,27 @@
         }
     ];
 
-    var renderLibrary = function () {
-        // HTML Template
-        var bookTemplateHtml = $('#templates .book').html();
-        var bookTemplate = _.template(bookTemplateHtml);
-
-        // Loop over the array of book objects.
-        for(var i = 0; i < books.length; i += 1) {
-            var newBookHtml = bookTemplate(books[i]);
-            $('#library').append(newBookHtml);
-        }
-    };
-
-    renderLibrary();
-
     // 5. Add New Books to the page via input
+    // 7. Append new book to Library Array.
     $('#submit-button').on('click', function (e) {
         // Create new book object
         var titleInput = $('#titleInput').val();
         var authorInput = $('#authorInput').val();
         var newBook = { title: titleInput, author: authorInput, status: 'available' };
+        testLibrary.push(newBook)
+
+        $('#library').empty();
+        renderLibrary(testLibrary);
 
         // HTML Template
-        var bookTemplateHtml = $('#templates .book').html();
-        var bookTemplate = _.template(bookTemplateHtml);
-        var newBookHtml = bookTemplate(newBook);
+        // var bookTemplateHtml = $('#templates .book').html();
+        // var bookTemplate = _.template(bookTemplateHtml);
+        // var newBookHtml = bookTemplate(newBook);
 
         // Append HTML to document
-        $('#library').append(newBookHtml);
+        // $('#library').append(newBookHtml);
     });
-
-    // 7. Append new book to Library Array.
-
-    var titleInput = $('#titleInput').val();
-    var authorInput = $('#authorInput').val();
-    var newBook = { title: titleInput, author: authorInput, status: 'available' };
-    var Library = [];
-    Library.push(newBook)
+        
 
 
 
